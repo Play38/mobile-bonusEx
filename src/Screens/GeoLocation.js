@@ -1,13 +1,31 @@
 import React, {Component} from "react";
-import {Platform, StyleSheet, Text, View, Button} from "react-native";
+import {Platform, StyleSheet, Text, View, TouchableOpacity, Alert} from "react-native";
 
-type Props = {};
 export default class App extends Component<Props> {
+    state = {
+        location: null
+    };
+
+    findCoordinates = () => {
+        navigator.geolocation.getCurrentPosition(
+          position => {
+              const location = JSON.stringify(position);
+
+              this.setState({ location });
+          },
+          error => Alert.alert(error.message),
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+        );
+    };
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.heading}>Geo</Text>
-            </View>
+          <View style={styles.container}>
+              <TouchableOpacity onPress={this.findCoordinates}>
+                  <Text style={styles.welcome}>Find My Coords?</Text>
+                  <Text>Location: {this.state.location}</Text>
+              </TouchableOpacity>
+          </View>
         );
     }
 }

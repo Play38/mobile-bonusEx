@@ -1,14 +1,34 @@
 import React, {Component} from "react";
 import {Platform, StyleSheet, Text, View, Button} from "react-native";
+import { setUpdateIntervalForType, SensorTypes, gyroscope } from 'react-native-sensors'
 
-type Props = {};
+setUpdateIntervalForType(SensorTypes.gyroscope, 500)
+
 export default class App extends Component<Props> {
+    constructor(props) {
+        super(props)
+        this.state = {
+            x: 0,
+            y: 0,
+            z: 0
+        }
+    }
+
+    componentDidMount() {
+        const sub = gyroscope.subscribe(({ x, y, z }) => this.setState({ x, y, z }))
+        this.setState({ sub })
+    }
+
+    componentWillUnmount() {
+        this.state.sub.unsubscribe()
+    }
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.heading}>Gyro</Text>
-                <Button title='CLICK ME'/>
-            </View>
+          <View style = {styles.container}>
+              <Text>X: {this.state.x.toFixed(2)}</Text>
+              <Text>Y: {this.state.y.toFixed(2)}</Text>
+              <Text>Z: {this.state.z.toFixed(2)}</Text>
+          </View>
         );
     }
 }
