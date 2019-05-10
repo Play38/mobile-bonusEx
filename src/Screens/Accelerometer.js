@@ -21,26 +21,38 @@ export default class App extends Component<Props> {
     componentWillUnmount() {
         this.state.sub.unsubscribe()
     }
+
     render() {
+      let minusX, minusY,minusZ;
+      minusX = minusCheck(this.state.x)
+      minusY = minusCheck(this.state.x)
+      minusZ = minusCheck(this.state.x)
         return (
           <View style = {styles.container}>
               <View style = {styles.box}>
-                  <Text>X: </Text>
-              <ProgressBar style={styles.bar} progress={this.state.x} color={Colors.red800} />
+                  <Text>{minusX}X: </Text>
+              <ProgressBar style={styles.bar} progress={Math.abs(this.state.x/10)} color={Colors.red800} />
               </View>
               <View style = {styles.box}>
-                  <Text>Y: </Text>
-              <ProgressBar style={styles.bar} progress={this.state.y} color={Colors.red800} />
+                  <Text>{minusY}Y: </Text>
+              <ProgressBar style={styles.bar} progress={Math.abs(this.state.y/10)} color={Colors.red800} />
               </View>
               <View style = {styles.box}>
-                  <Text>Z: </Text>
-              <ProgressBar style={styles.bar} progress={this.state.z} color={Colors.red800} />
+                  <Text>{minusZ}Z: </Text>
+              <ProgressBar style={styles.bar} progress={Math.abs(this.state.z/10)} color={Colors.red800} />
               </View>
           </View>
         );
     }
 }
-
+function minusCheck( a )
+{
+  let minus
+  if (a < 0)
+    minus = '-'
+  else minus = null
+  return minus
+}
 const styles = StyleSheet.create({
     container:{
         flex:1,
