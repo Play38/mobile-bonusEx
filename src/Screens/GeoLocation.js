@@ -7,6 +7,7 @@ export default class App extends Component<Props> {
         location: null,
         location2: null
     };
+
     findCoordinates = () => {
 
         navigator.geolocation.getCurrentPosition(
