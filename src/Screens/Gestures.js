@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Platform, StyleSheet, Text, View, Button, Alert, TouchableOpacity} from "react-native";
+import {Platform, StyleSheet, Text, View, Alert, TouchableOpacity} from "react-native";
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import Draggable from 'react-native-draggable';
 export default class App extends Component<Props> {
@@ -59,10 +59,9 @@ export default class App extends Component<Props> {
                 <Text style={styles.heading}>Gestures</Text>
                 <TouchableOpacity
                   onLongPress={this.handlerLongClick}
-                  //Here is the trick
                   activeOpacity={0.6}
                   style={styles.button}>
-                    <Text style={styles.TextStyle}> Long press me desu :3 </Text>
+                    <Text style={styles.TextStyle}> Long press me! </Text>
                 </TouchableOpacity>
                 <GestureRecognizer
                   onSwipe={(direction, state) => this.onSwipe(direction, state)}

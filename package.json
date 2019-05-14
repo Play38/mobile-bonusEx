@@ -1,0 +1,53 @@
+{
+  "name": "bonusEx",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "checkSubmission": {
+    "ex": "bonus",
+    "students": [
+      {
+        "id": "313432213",
+        "fullName": "Omer Guttman",
+        "email": "guttman99@gmail.com"
+      },
+      {
+        "id": "307923615",
+        "fullName": "Ofir Cohen",
+        "email": "ofir_kohn41@hotmail.com"
+      }
+    ],
+    "os": "Windows",
+    "device": "Android",
+    "deliveryDate": "04/30/2019",
+    "delay": false,
+    "delayReason": "",
+    "comments": "Couldn't check if location works on Ios, in Android we needed to change the AndroidManifest.xml file inside android directory for location permission, as it stated on official react native getting started website "
+  },
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "react": "16.8.3",
+    "react-native": "0.59.8",
+    "react-native-draggable": "^1.0.15",
+    "react-native-gesture-handler": "^1.2.1",
+    "react-native-paper": "^2.15.2",
+    "react-native-sensors": "^5.1.8",
+    "react-native-swipe-gestures": "^1.0.3",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.9.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/runtime": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-test-renderer": "16.8.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import {Platform, StyleSheet, Text, View, TouchableOpacity, Alert, PermissionsAndroid} from "react-native";
-import Permissions from 'react-native-permissions'
+import {StyleSheet, Text, View, TouchableOpacity, Alert} from "react-native";
 
 export default class App extends Component<Props> {
     state = {

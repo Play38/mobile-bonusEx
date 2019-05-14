@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {Platform, StyleSheet, Text, View, Button} from "react-native";
+import {Platform, StyleSheet, Text, View} from "react-native";
 import { setUpdateIntervalForType, SensorTypes, gyroscope } from 'react-native-sensors'
 
-setUpdateIntervalForType(SensorTypes.gyroscope, 500)
+setUpdateIntervalForType(SensorTypes.gyroscope, 100)
 
 export default class App extends Component<Props> {
     constructor(props) {

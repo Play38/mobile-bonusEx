@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import {Platform, StyleSheet, Text, View, Button} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import { ProgressBar, Colors } from 'react-native-paper';
 import { accelerometer, setUpdateIntervalForType, SensorTypes } from 'react-native-sensors'
 
-setUpdateIntervalForType(SensorTypes.accelerometer, 500)
+setUpdateIntervalForType(SensorTypes.accelerometer, 400)
 export default class App extends Component<Props> {
     constructor(props) {
         super(props)
