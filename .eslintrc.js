@@ -1,25 +1,47 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true
+  "env": {
+    "react-native/react-native": true,
+    "jest": true
   },
-  'extends': ['standard',"plugin:prettier/recommended"],
-  'globals': {
-    'Atomics': 'readonly',
-    'SharedArrayBuffer': 'readonly'
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true
-    },
-    'ecmaVersion': 2018,
-    'sourceType': 'module'
+  "settings": {
+    "react": {
+      "version": "16"
+    }
   },
-  'plugins': [
-    'react',
-    "prettier"
+  "globals": {
+    "it": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "react-native",
+    "prettier",
+    "prettier/react"
   ],
-  'rules': {
-    "prettier/prettier": "error"
+  "plugins": ["react", "react-native", "prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 100,
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "none"
+      }
+    ],
+    "class-methods-use-this": 0,
+    "react/prefer-stateless-function": 0,
+    "react/no-did-mount-set-state": 0,
+    "react/jsx-no-bind": 0,
+    "react/jsx-closing-tag-location": 2,
+    "react-native/no-color-literals": 0,
+    "import/no-commonjs": 0,
+    "import/no-nodejs-modules": 0,
+    "import/no-unresolved": 0
   }
 }
