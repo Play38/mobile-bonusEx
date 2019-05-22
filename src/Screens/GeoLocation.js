@@ -76,11 +76,22 @@ export default class App extends Component {
   }
   TextClick() {
     const stack = []
-    stack.push(
-      <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
-        <Text>Click on me to get your current location</Text>
-      </TouchableOpacity>
-    )
+    if(this.state.click === 0)
+    {
+      stack.push(
+          <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
+            <Text>Click on me to get your current location</Text>
+          </TouchableOpacity>
+      )
+    }
+    else {
+      stack.push(
+          <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
+            <Text>Click on me to get your current location</Text>
+            <Text>Latitude: {this.state.location.toFixed(2)}   Longitude: {this.state.location2.toFixed(2)}</Text>
+          </TouchableOpacity>
+      )
+    }
     return stack
   }
   render() {
