@@ -50,55 +50,33 @@ export default class App extends Component {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     )
   }
-  mapClick() {
-    const stack = []
-    if (this.state.click === 1) {
-      stack.push(
-        <View style={stylesMap.mapContainer}>
-          <MapView
-            style={stylesMap.map}
-            showsUserLocation
-            region={{
-              latitude: this.state.location2,
-              latitudeDelta: 0.1,
-              longitude: this.state.location,
-              longitudeDelta: 0.1
-            }}
-          >
-            <MapView.Marker
-              coordinate={{ latitude: this.state.location2, longitude: this.state.location }}
-            />
-          </MapView>
-        </View>
-      )
-    }
-    return stack
-  }
-  TextClick() {
-    const stack = []
-    if(this.state.click === 0)
-    {
-      stack.push(
-          <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
-            <Text>Click on me to get your current location</Text>
-          </TouchableOpacity>
-      )
-    }
-    else {
-      stack.push(
-          <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
-            <Text>Click on me to get your current location</Text>
-            <Text>Latitude: {this.state.location.toFixed(2)}   Longitude: {this.state.location2.toFixed(2)}</Text>
-          </TouchableOpacity>
-      )
-    }
-    return stack
-  }
   render() {
     return (
       <View style={styles.container}>
-        {this.TextClick()}
-        {this.mapClick()}
+          <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
+              <Text>Click on me to get your current location</Text>
+              {this.state.click === 1 &&
+              <Text>Latitude: {this.state.location.toFixed(2)}   Longitude: {this.state.location2.toFixed(2)}</Text>
+              }
+          </TouchableOpacity>
+        {this.state.click === 1 &&
+            <View style={stylesMap.mapContainer}>
+            <MapView
+            style={stylesMap.map}
+            showsUserLocation
+            region={{
+            latitude: this.state.location2,
+            latitudeDelta: 0.1,
+            longitude: this.state.location,
+            longitudeDelta: 0.1
+        }}
+            >
+            <MapView.Marker
+            coordinate={{ latitude: this.state.location2, longitude: this.state.location }}
+            />
+            </MapView>
+            </View>}
+
       </View>
     )
   }
