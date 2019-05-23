@@ -37,7 +37,7 @@ export default class App extends Component {
     }
   }
 
-    handlePressFindCoordinates = () => {
+  handlePressFindCoordinates = () => {
     navigator.geolocation.getCurrentPosition(
       position => {
         const click = 1
@@ -53,30 +53,33 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
-              <Text>Click on me to get your current location</Text>
-              {this.state.click === 1 &&
-              <Text>Latitude: {this.state.location.toFixed(2)}   Longitude: {this.state.location2.toFixed(2)}</Text>
-              }
-          </TouchableOpacity>
-        {this.state.click === 1 &&
-            <View style={stylesMap.mapContainer}>
+        <TouchableOpacity style={stylesMap.mapText} onPress={this.handlePressFindCoordinates}>
+          <Text>Click on me to get your current location</Text>
+          {this.state.click === 1 && (
+            <Text>
+              Latitude: {this.state.location.toFixed(2)} Longitude:{' '}
+              {this.state.location2.toFixed(2)}
+            </Text>
+          )}
+        </TouchableOpacity>
+        {this.state.click === 1 && (
+          <View style={stylesMap.mapContainer}>
             <MapView
-            style={stylesMap.map}
-            showsUserLocation
-            region={{
-            latitude: this.state.location2,
-            latitudeDelta: 0.1,
-            longitude: this.state.location,
-            longitudeDelta: 0.1
-        }}
+              style={stylesMap.map}
+              showsUserLocation
+              region={{
+                latitude: this.state.location2,
+                latitudeDelta: 0.1,
+                longitude: this.state.location,
+                longitudeDelta: 0.1
+              }}
             >
-            <MapView.Marker
-            coordinate={{ latitude: this.state.location2, longitude: this.state.location }}
-            />
+              <MapView.Marker
+                coordinate={{ latitude: this.state.location2, longitude: this.state.location }}
+              />
             </MapView>
-            </View>}
-
+          </View>
+        )}
       </View>
     )
   }
